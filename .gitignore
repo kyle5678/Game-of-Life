@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Game of Life/obj
+/.vs/Game of Life/v16
+/Game of Life/bin/Debug/netcoreapp3.1
