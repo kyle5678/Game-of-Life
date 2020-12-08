@@ -39,16 +39,21 @@ namespace Game_of_Life
         public static void NextGeneration()
         {
             bool[,] newLifeGrid = new bool[LifeGrid.GetLength(0), LifeGrid.GetLength(1)];
+            int changes = 0;
 
             for (int i = 0; i < LifeGrid.GetLength(0); i++)
             {
                 for (int j = 0; j < LifeGrid.GetLength(1); j++)
                 {
                     newLifeGrid[i, j] = CheckTile(i, j);
+
+                    if (LifeGrid[i, j] != CheckTile(i, j))
+                        changes++;
                 }
             }
 
             LifeGrid = newLifeGrid;
+            Console.WriteLine($"Life Grid went through ({changes}) changes!");
         }
 
         public static bool CheckTile(int y, int x)
