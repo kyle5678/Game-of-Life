@@ -38,7 +38,17 @@ namespace Game_of_Life
 
         public static void NextGeneration()
         {
+            bool[,] newLifeGrid = new bool[LifeGrid.GetLength(0), LifeGrid.GetLength(1)];
 
+            for (int i = 0; i < LifeGrid.GetLength(0); i++)
+            {
+                for (int j = 0; j < LifeGrid.GetLength(1); j++)
+                {
+                    newLifeGrid[i, j] = CheckTile(i, j);
+                }
+            }
+
+            LifeGrid = newLifeGrid;
         }
 
         public static bool CheckTile(int y, int x)
@@ -120,6 +130,9 @@ namespace Game_of_Life
                 }
             }
             // end of long thing
+
+            //Console.WriteLine($"{livingNeighbors} living neighbor(s)");
+            //Console.WriteLine($"{totalNeighbors} total neighbor(s)");
 
             if (living)
             {

@@ -6,13 +6,15 @@ namespace Game_of_Life
     {
         static void Main(string[] args)
         {
+            Grid.Generate(5, 5, 0.2);
+            Grid.PrintGrid();
+
             for (; ; )
             {
-                Grid.Generate(5, 5, 0.2);
-                Grid.PrintGrid();
-
-                Console.WriteLine($"{Grid.LifeGrid[2, 2]} {Grid.CheckTile(2, 2)}");
                 Console.ReadLine();
+
+                Grid.NextGeneration();
+                Grid.PrintGrid();
             }
         }
     }
