@@ -41,11 +41,103 @@ namespace Game_of_Life
 
         }
 
-        private static bool CheckTile(int height, int length)
+        public static bool CheckTile(int y, int x)
         {
             int livingNeighbors = 0;
             int totalNeighbors = 0;
+            bool living = LifeGrid[y, x];
 
+            // long thing could probably be made shorter
+            if (y > 0 && x > 0)
+            {
+                totalNeighbors++;
+                if (LifeGrid[y - 1, x - 1])
+                {
+                    livingNeighbors++;
+                }
+            }
+
+            if (y > 0)
+            {
+                totalNeighbors++;
+                if (LifeGrid[y - 1, x])
+                {
+                    livingNeighbors++;
+                }
+            }
+
+            if (y > 0 && x < LifeGrid.GetLength(1) - 1)
+            {
+                totalNeighbors++;
+                if (LifeGrid[y - 1, x + 1])
+                {
+                    livingNeighbors++;
+                }
+            }
+
+            if (x > 0)
+            {
+                totalNeighbors++;
+                if (LifeGrid[y, x - 1])
+                {
+                    livingNeighbors++;
+                }
+            }
+
+            if (x < LifeGrid.GetLength(1) - 1)
+            {
+                totalNeighbors++;
+                if (LifeGrid[y, x + 1])
+                {
+                    livingNeighbors++;
+                }
+            }
+
+            if (y < LifeGrid.GetLength(0) - 1 && x > 0)
+            {
+                totalNeighbors++;
+                if (LifeGrid[y + 1, x - 1])
+                {
+                    livingNeighbors++;
+                }
+            }
+
+            if (y < LifeGrid.GetLength(0) - 1)
+            {
+                totalNeighbors++;
+                if (LifeGrid[y + 1, x])
+                {
+                    livingNeighbors++;
+                }
+            }
+
+            if (y < LifeGrid.GetLength(0) - 1 && x < LifeGrid.GetLength(1) - 1)
+            {
+                totalNeighbors++;
+                if (LifeGrid[y + 1, x + 1])
+                {
+                    livingNeighbors++;
+                }
+            }
+            // end of long thing
+
+            if (living)
+            {
+                if (livingNeighbors < 2)
+                    return false;
+                else if (livingNeighbors > 3)
+                    return false;
+                else
+                    return true;
+            }
+
+            else
+            {
+                if (livingNeighbors == 3)
+                    return true;
+                else
+                    return false;
+            }
         }
     }
 }
