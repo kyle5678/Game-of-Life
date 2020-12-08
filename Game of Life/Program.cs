@@ -6,7 +6,9 @@ namespace Game_of_Life
     {
         static void Main(string[] args)
         {
-            Grid.Generate(5, 5, 0.2);
+            Grid.InputGrid();
+            //Grid.Generate(5, 5, 0.5);
+
             Grid.PrintGrid();
 
             for (; ; )
