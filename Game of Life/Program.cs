@@ -14,6 +14,12 @@ namespace Game_of_Life
             catch (Exception e)
             {
                 Console.WriteLine("Sorry, an exception (developer-speak for ERROR) occured...");
+
+                Console.Beep(622, 250);
+                Console.Beep(587, 250);
+                Console.Beep(466, 250);
+                Console.Beep(523, 250);
+
                 Console.WriteLine(e);
 
                 //Console.Write("Would you like to report this to the developer? (y/n) ");
@@ -21,6 +27,8 @@ namespace Game_of_Life
                 //{
                 //    System.Diagnostics.Process.Start("explorer", "mailto:aklingad@gmail.com");
                 //}
+
+                Console.ReadKey();
             }
         }
 
@@ -37,7 +45,7 @@ namespace Game_of_Life
                     Console.Write("life rate (from 0 to 1)? ");
                     double liferate = Convert.ToDouble(Console.ReadLine());
 
-                    Grid.Generate(length, height, liferate);
+                    Grid.Generate(height, length, liferate);
                     break;
                 case "2":
                     Grid.InputGrid();
